@@ -26,7 +26,7 @@ export default Mixin.create({
     this._super(...arguments);
 
     const image = this.$('img');
-    const isCached = image[0].complete;
+    const isCached = (image[0] ? image[0].complete : false);
 
     if (isCached) {
       return run.scheduleOnce('afterRender', this, this._safeSet, 'loaded', true);
